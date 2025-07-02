@@ -1,0 +1,171 @@
+@prefix : <http://example.org/agroOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AgricultureOntology a owl:Ontology ;
+    rdfs:label "Ontologie des cultures agricoles"@fr ;
+    rdfs:comment "Ontologie pour modéliser les connaissances sur les cultures locales, en particulier le maïs"@fr .
+
+:MaïsLocal a :Maïs ;
+    rdfs:label "Maïs local"@fr ;
+    :aPourPériodeSemis :SemisPrintemps ;
+    :aPourRendement :RendementMoyen ;
+    :adaptéÀ :ClimatTropical ;
+    :cultivéDans :Agadir ;
+    :estDeVariété :MaïsBlanc , :MaïsJaune ;
+    :estSensibleÀ :Rouille ;
+    :requiertTypeSol :SolArgileux ;
+    :utiliseTechnique :SemisDirect .
+
+:aPourPériodeSemis a owl:ObjectProperty ;
+    rdfs:label "a pour période de semis"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :PériodeSemis .
+
+:aPourRendement a owl:ObjectProperty ;
+    rdfs:label "a pour rendement"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :Rendement .
+
+:adaptéÀ a owl:ObjectProperty ;
+    rdfs:label "est adapté à"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :Climat .
+
+:cultivéDans a owl:ObjectProperty ;
+    rdfs:label "cultivé dans"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :Région .
+
+:description a owl:DatatypeProperty ;
+    rdfs:label "description du temps"@fr ;
+    rdfs:domain :Climat ;
+    rdfs:range xsd:string .
+
+:début a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+:estDeVariété a owl:ObjectProperty ;
+    rdfs:label "est de variété"@fr ;
+    rdfs:domain :Maïs ;
+    rdfs:range :Variété .
+
+:estSensibleÀ a owl:ObjectProperty ;
+    rdfs:label "est sensible à"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :Maladie .
+
+:fin a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+:humidité a owl:DatatypeProperty ;
+    rdfs:label "humidité"@fr ;
+    rdfs:domain :Climat ;
+    rdfs:range xsd:integer .
+
+:pression a owl:DatatypeProperty ;
+    rdfs:label "pression atmosphérique"@fr ;
+    rdfs:domain :Climat ;
+    rdfs:range xsd:integer .
+
+:requiertTypeSol a owl:ObjectProperty ;
+    rdfs:label "requiert type de sol"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :TypeSol .
+
+:temperature a owl:DatatypeProperty ;
+    rdfs:label "température"@fr ;
+    rdfs:domain :Climat ;
+    rdfs:range xsd:decimal .
+
+:unité a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+:utiliseTechnique a owl:ObjectProperty ;
+    rdfs:label "utilise technique"@fr ;
+    rdfs:domain :Culture ;
+    rdfs:range :TechniqueAgricole .
+
+:valeur a owl:DatatypeProperty ;
+    rdfs:range xsd:decimal .
+
+:vitesseVent a owl:DatatypeProperty ;
+    rdfs:label "vitesse du vent"@fr ;
+    rdfs:domain :Climat ;
+    rdfs:range xsd:decimal .
+
+:Agadir a :Région ;
+    rdfs:label "Agadir"@fr .
+
+:ClimatTropical a :Climat ;
+    rdfs:label "Climat tropical"@fr .
+
+:MaïsBlanc a :Variété ;
+    rdfs:label "Maïs blanc"@fr .
+
+:MaïsJaune a :Variété ;
+    rdfs:label "Maïs jaune"@fr .
+
+:RendementMoyen a :Rendement ;
+    rdfs:label "Rendement moyen"@fr ;
+    :unité "tonnes/hectare"^^xsd:string ;
+    :valeur 8.0 .
+
+:Rouille a :Maladie ;
+    rdfs:label "Rouille du maïs"@fr .
+
+:SemisDirect a :TechniqueAgricole ;
+    rdfs:label "Semis direct"@fr .
+
+:SemisPrintemps a :PériodeSemis ;
+    rdfs:label "Semis de printemps"@fr ;
+    :début "15-04"^^xsd:string ;
+    :fin "15-05"^^xsd:string .
+
+:SolArgileux a :TypeSol ;
+    rdfs:label "Sol argileux"@fr .
+
+:Maladie a owl:Class ;
+    rdfs:label "Maladie"@fr ;
+    rdfs:comment "Affection pouvant toucher les cultures"@fr .
+
+:Maïs a owl:Class ;
+    rdfs:label "Maïs"@fr ;
+    rdfs:comment "Céréale de la famille des Poacées, originaire d'Amérique"@fr ;
+    rdfs:subClassOf :Culture .
+
+:PériodeSemis a owl:Class ;
+    rdfs:label "Période de semis"@fr ;
+    rdfs:comment "Période optimale pour semer une culture"@fr .
+
+:Rendement a owl:Class ;
+    rdfs:label "Rendement"@fr ;
+    rdfs:comment "Quantité produite par unité de surface"@fr .
+
+:Région a owl:Class ;
+    rdfs:label "Région"@fr ;
+    rdfs:comment "Zone géographique de culture"@fr .
+
+:TechniqueAgricole a owl:Class ;
+    rdfs:label "Technique agricole"@fr ;
+    rdfs:comment "Méthode de culture utilisée"@fr .
+
+:TypeSol a owl:Class ;
+    rdfs:label "Type de sol"@fr ;
+    rdfs:comment "Classification des sols selon leurs caractéristiques"@fr .
+
+:Variété a owl:Class ;
+    rdfs:label "Variété"@fr ;
+    rdfs:comment "Sous-type d'une espèce cultivée"@fr .
+
+:Climat a owl:Class ;
+    rdfs:label "Climat"@fr ;
+    rdfs:comment "Conditions climatiques d'une région"@fr .
+
+:Culture a owl:Class ;
+    rdfs:label "Culture"@fr ;
+    rdfs:comment "Plante cultivée à des fins agricoles"@fr .
+
+
+
